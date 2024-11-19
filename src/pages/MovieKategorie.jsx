@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 // import nowPlayingApi from "../api/nowPlayingApi";
 import { nowPlayingApi, popularApi, topRatedApi } from "../api/movieApi";
 import { combineSlices } from "@reduxjs/toolkit";
+import MovieList from "../components/MovieList.jsx";
 
 export default function MovieKategorie() {
   // const navigate = useNavigate();
@@ -48,6 +49,7 @@ export default function MovieKategorie() {
 
     fetchPopular();
   }, []);
+
   useEffect(() => {
     async function fetchTopRated() {
       try {
@@ -76,45 +78,9 @@ export default function MovieKategorie() {
 
   return (
     <div>
-      <h2>NowPlay</h2>
-      <p>...more</p>
-      <ul>
-        {nowPlaying.map((nowPlay) => {
-          const { id, title, poster_path } = nowPlay;
-          return (
-            <li key={id}>
-              <img src={`https://image.tmdb.org/t/p/w200${poster_path}`} />
-              <h4>{title}</h4>
-            </li>
-          );
-        })}
-      </ul>
-      <h2>Popular</h2>
-      <p>...more</p>
-      <ul>
-        {pupulars.map((pupular) => {
-          const { id, title, poster_path } = pupular;
-          return (
-            <li key={id}>
-              <img src={`https://image.tmdb.org/t/p/w200${poster_path}`} />
-              <h4>{title}</h4>
-            </li>
-          );
-        })}
-      </ul>
-      <h2>Top Rated</h2>
-      <p>...more</p>
-      <ul>
-        {topRateds.map((topRated) => {
-          const { id, title, poster_path } = topRated;
-          return (
-            <li key={id}>
-              <img src={`https://image.tmdb.org/t/p/w200${poster_path}`} />
-              <h4>{title}</h4>
-            </li>
-          );
-        })}
-      </ul>
+      <MovieList kategorieTitle="Now Playing" state={nowPlaying} />
+      <MovieList kategorieTitle="Popular" state={pupulars} />
+      <MovieList kategorieTitle="Top Rated" state={topRateds} />
     </div>
   );
 }
