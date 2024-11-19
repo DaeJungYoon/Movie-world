@@ -1,10 +1,11 @@
 import React from "react";
-import MainPage from "./pages/MainPage";
+import { RouterProvider } from "react-router-dom";
+import router from "./router";
 
 export default function App() {
   return (
     <>
-      <MainPage />
+      <RouterProvider router={router}></RouterProvider>
     </>
   );
 }
