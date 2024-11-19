@@ -77,6 +77,7 @@ export default function MovieKategorie() {
   return (
     <div>
       <h2>NowPlay</h2>
+      <p>...more</p>
       <ul>
         {nowPlaying.map((nowPlay) => {
           const { id, title, poster_path } = nowPlay;
@@ -89,6 +90,7 @@ export default function MovieKategorie() {
         })}
       </ul>
       <h2>Popular</h2>
+      <p>...more</p>
       <ul>
         {pupulars.map((pupular) => {
           const { id, title, poster_path } = pupular;
@@ -101,6 +103,7 @@ export default function MovieKategorie() {
         })}
       </ul>
       <h2>Top Rated</h2>
+      <p>...more</p>
       <ul>
         {topRateds.map((topRated) => {
           const { id, title, poster_path } = topRated;
