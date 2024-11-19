@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import postApi from "../api/postsApi";
+// import axios from "axios";
+import nowPlayingApi from "../api/nowPlayingApi";
 
 export default function MovieKategorie() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [nowPlaying, setNowPlaying] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -13,7 +13,7 @@ export default function MovieKategorie() {
   useEffect(() => {
     async function fetchNowPlay() {
       try {
-        const data = await postApi.getNowPlay();
+        const data = await nowPlayingApi.getNowPlaying();
 
         setNowPlaying(data);
       } catch (err) {
