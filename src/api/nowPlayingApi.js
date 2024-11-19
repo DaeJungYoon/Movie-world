@@ -3,7 +3,7 @@ import api from "./nowPlayingAxios";
 const nowPlayingApi = {
   getNowPlaying: async () => {
     const resposne = await api.get("");
-    return resposne.data;
+    return resposne.data.results;
   },
   // getNowPlayingById: async (postId) => {
   //   const response = await api.get(`/${postId}`);
