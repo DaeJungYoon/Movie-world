@@ -9,63 +9,55 @@ import MovieList from "../components/MovieList.jsx";
 
 export default function MovieKategorie() {
   // const navigate = useNavigate();
-  const [nowPlaying, setNowPlaying] = useState([]);
-  const [pupulars, setPupulars] = useState([]);
-  const [topRateds, setTopRateds] = useState([]);
+  // const [nowPlaying, setNowPlaying] = useState([]);
+  // const [pupulars, setPupulars] = useState([]);
+  // const [topRateds, setTopRateds] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [datas, setDatas] = useState([]);
 
   useEffect(() => {
-    async function fetchNowPlay() {
+    async function fetchMovieData() {
       try {
-        const data = await nowPlayingApi.getNowPlaying();
-        setNowPlaying(data);
+        // 데이터 요청 3번
+        const nowdata = await nowPlayingApi.getNowPlaying();
+        const topdata = await topRatedApi.getTopRated();
+        const popdata = await popularApi.getPopular();
+
+        // 응답받은 데이터 기반으로 렌더링할 새로운 배열 생성
+        // const newArr = [
+        //   { nowPlaying: nowdata },
+        //   { topRated: topdata },
+        //   { Popular: popdata },
+        // ];
+
+        const newArr = [
+          {
+            kategorieTitle: "nowPlaying",
+            movies: nowdata,
+          },
+          {
+            kategorieTitle: "topRated",
+            movies: topdata,
+          },
+          {
+            kategorieTitle: "Popular",
+            movies: popdata,
+          },
+        ];
+
+        // 렌더링 할 데이터 상태 변경
+        setDatas(newArr);
       } catch (err) {
         setError(err.message);
 
         console.error(err);
-        console.log("에러남 ㅠㅠ");
       } finally {
         setLoading(false);
       }
     }
 
-    fetchNowPlay();
-  }, []);
-  useEffect(() => {
-    async function fetchPopular() {
-      try {
-        const data = await popularApi.getPopular();
-        setPupulars(data);
-      } catch (err) {
-        setError(err.message);
-
-        console.error(err);
-        console.log("에러남 ㅠㅠ");
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchPopular();
-  }, []);
-
-  useEffect(() => {
-    async function fetchTopRated() {
-      try {
-        const data = await topRatedApi.getTopRated();
-        setTopRateds(data);
-      } catch (err) {
-        setError(err.message);
-
-        console.error(err);
-        console.log("에러남 ㅠㅠ");
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchTopRated();
+    fetchMovieData();
   }, []);
 
   if (loading) {
@@ -78,9 +70,26 @@ export default function MovieKategorie() {
 
   return (
     <div>
-      <MovieList kategorieTitle="Now Playing" state={nowPlaying} />
-      <MovieList kategorieTitle="Popular" state={pupulars} />
-      <MovieList kategorieTitle="Top Rated" state={topRateds} />
+      {/* {datas.map((movieObject) => {
+        console.log(movieObject);
+        // Object.keys(movieObject) === [nowPlaying, topRated, Popular]
+        return Object.keys(movieObject).map((key) => {
+          console.log(key);
+          console.log(movieObject[key]);
+          const movieArr = movieObject[key];
+
+          return <MovieList kategorieTitle={key} state={movieArr}></MovieList>;
+        });
+      })} */}
+
+      {datas.map((data) => {
+        return (
+          <MovieList
+            kategoriTitle={data.kategorieTitle}
+            movies={data.movies}
+          ></MovieList>
+        );
+      })}
     </div>
   );
 }
