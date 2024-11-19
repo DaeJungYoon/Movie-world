@@ -23,19 +23,4 @@ const topRatedApi = {
   },
 };
 
-// const movieDetailApi = {
-//   getMovieDetail: async () => {
-//     const resposne = await movieDetailInstance.get("");
-//     return resposne.data.results;
-//   },
-//   getMovieDetailId: async (movie_id) => {
-//     console.log(movie_id);
-
-//     const response = await api.get(
-//       `/${movie_id}?api_key=f15d094fa013544c9bab38fbd5d29543&language=ko-kr`
-//     );
-//     console.log(response);
-//     return response.data;
-//   },
-// };
 export { nowPlayingApi, popularApi, topRatedApi };
