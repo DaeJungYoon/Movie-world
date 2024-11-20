@@ -1,7 +1,8 @@
-import MovieKategorie from "../pages/MovieKategorie";
 import { createBrowserRouter } from "react-router-dom";
 import MainPage from "../pages/MainPage";
+import MovieKategorie from "../pages/MovieKategorie";
 import RootLayout from "../RootLayout";
+import NowPlayMore from "../pages/NowPlayMore";
 
 const router = createBrowserRouter([
   {
@@ -22,10 +23,10 @@ const router = createBrowserRouter([
         index: true,
         element: <MovieKategorie />,
       },
-      // {
-      //   path: "/kategorie/now_playing_more",
-      //   element: <NowPlayMore />,
-      // },
+      {
+        path: "/kategorie/now_playing_more",
+        element: <NowPlayMore />,
+      },
       // {
       //   path: "/kategorie/popular_more",
       //   element: <PopularMore />,
