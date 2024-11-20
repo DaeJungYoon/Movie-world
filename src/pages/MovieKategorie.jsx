@@ -33,15 +33,15 @@ export default function MovieKategorie() {
 
         const newArr = [
           {
-            kategorieTitle: "nowPlaying",
+            kategorieTitle: "now_playing_more",
             movies: nowdata,
           },
           {
-            kategorieTitle: "topRated",
+            kategorieTitle: "top_rated_more",
             movies: topdata,
           },
           {
-            kategorieTitle: "Popular",
+            kategorieTitle: "popular_more",
             movies: popdata,
           },
         ];
@@ -82,9 +82,36 @@ export default function MovieKategorie() {
         });
       })} */}
 
+      {/* {datas.map((data) => {
+        return (
+          const { kategoriTitle, movies } = props;
+  return (
+    <div>
+      <h2>{kategoriTitle}</h2>
+
+      <p>
+        <Link to={`/kategorie/${kategoriTitle}`}>...more</Link>
+      </p>
+      <ul>
+        {movies.map((item) => {
+
+          return return (
+            <li key={items.id}>
+              <img src={`https://image.tmdb.org/t/p/w200${items.poster_path}`} />
+              <h4>{items.title}</h4>
+            </li>
+          );;
+        })}
+      </ul>
+    </div>
+  );
+        );
+      })} */}
+
       {datas.map((data) => {
         return (
           <MovieList
+            key={data.kategorieTitle}
             kategoriTitle={data.kategorieTitle}
             movies={data.movies}
           ></MovieList>
