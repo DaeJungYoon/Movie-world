@@ -3,6 +3,8 @@ import MainPage from "../pages/MainPage";
 import MovieKategorie from "../pages/MovieKategorie";
 import RootLayout from "../RootLayout";
 import NowPlayMore from "../pages/NowPlayMore";
+import PopularMore from "../pages/PopularMore";
+import TopRatedMore from "../pages/TopRatedMore";
 
 const router = createBrowserRouter([
   {
@@ -27,14 +29,14 @@ const router = createBrowserRouter([
         path: "/kategorie/now_playing_more",
         element: <NowPlayMore />,
       },
-      // {
-      //   path: "/kategorie/popular_more",
-      //   element: <PopularMore />,
-      // },
-      // {
-      //   path: "/kategorie/top_rated_more",
-      //   element: <TopRatedMore />,
-      // },
+      {
+        path: "/kategorie/popular_more",
+        element: <PopularMore />,
+      },
+      {
+        path: "/kategorie/top_rated_more",
+        element: <TopRatedMore />,
+      },
     ],
   },
 ]);
