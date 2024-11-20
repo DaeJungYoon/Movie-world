@@ -112,7 +112,7 @@ export default function MovieKategorie() {
         return (
           <MovieList
             key={data.kategorieTitle}
-            kategoriTitle={data.kategorieTitle}
+            kategorieTitle={data.kategorieTitle}
             movies={data.movies}
           ></MovieList>
         );
