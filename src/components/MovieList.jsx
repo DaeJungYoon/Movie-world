@@ -9,7 +9,9 @@ export default function MovieList(props) {
       <h2>{kategorieTitle}</h2>
 
       <p>
-        <Link to={`/kategorie/${kategorieTitle}`}>...more</Link>
+        <Link key={kategorieTitle} to={`/kategorie/${kategorieTitle}`}>
+          ...more
+        </Link>
       </p>
       <ul style={{ display: "flex" }}>
         {movies.map((item) => {
