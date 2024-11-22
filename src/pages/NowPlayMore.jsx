@@ -46,7 +46,7 @@ export default function NowPlayMore() {
       {datas.map((data) => {
         const now = data.movies;
         return now.map((item) => {
-          return <MovieCard item={item}></MovieCard>;
+          return <MovieCard key={item.id} item={item}></MovieCard>;
         });
       })}
       ;
