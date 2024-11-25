@@ -1,24 +1,28 @@
-import {
-  instance,
-
-} from "./movieAxios";
+import { movieListsInstance } from "./movieAxios";
 
 const nowPlayingApi = {
   getNowPlaying: async () => {
-    const resposne = await instance.get("/now_playing");
+    const resposne = await movieListsInstance.get("/now_playing");
     return resposne.data.results;
   },
 };
 const popularApi = {
   getPopular: async () => {
-    const resposne = await instance.get("/popular");
+    const resposne = await movieListsInstance.get("/popular");
     return resposne.data.results;
   },
 };
 const topRatedApi = {
   getTopRated: async () => {
-    const resposne = await instance.get("/top_rated");
+    const resposne = await movieListsInstance.get("/top_rated");
     return resposne.data.results;
+  },
+};
+
+const detailApi = {
+  getDetail: async () => {
+    const resposne = await moviesInstance.get(`/&{movieId}`);
+    return resposne.data;
   },
 };
 
