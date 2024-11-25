@@ -12,7 +12,6 @@ export default function MovieDetail() {
       try {
         const data = await detailApi.getDetail(movieDetailId);
         setMovie(data);
-
       } catch (err) {
         console.error(err);
       } finally {
@@ -25,8 +24,31 @@ export default function MovieDetail() {
   return (
     <>
       <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} />
-      <h1>{movie.title}</h1>
-      <p>{movie.overview}</p>
+      <ul>
+        <li>
+          <h1>제목: {movie.title}</h1>
+        </li>
+        <li>
+          <p>줄거리: {movie.overview}</p>
+        </li>
+        <li>
+          <p>상영시간: {movie.runtime}</p>
+        </li>
+        <li>
+          <p>개봉일: {movie.release_date}</p>
+        </li>
+        <li>
+          <p>평점: {movie.vote_average}</p>
+        </li>
+        <li>
+          <p>투표수: {movie.vote_count}</p>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <h4>리뷰</h4>
+        </li>
+      </ul>
     </>
   );
 }
