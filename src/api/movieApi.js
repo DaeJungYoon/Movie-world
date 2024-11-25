@@ -25,6 +25,10 @@ const detailApi = {
     const resposne = await moviesInstance.get(`/${movieDetailId}`);
     return resposne.data;
   },
+  getDetailReview: async (movieDetailId) => {
+    const resposne = await moviesInstance.get(`/${movieDetailId}/reviews`);
+    return resposne.data.results;
+  },
 };
 
 export { nowPlayingApi, popularApi, topRatedApi, detailApi };
