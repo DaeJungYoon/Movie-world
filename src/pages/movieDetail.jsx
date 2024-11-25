@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 export default function MovieDetail() {
   const { movieDetailId } = useParams();
   const [movie, setMovie] = useState();
+  const [movieReview, setMovieReview] = useState();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -18,7 +19,21 @@ export default function MovieDetail() {
         setLoading(false);
       }
     }
+    async function fetchMovieReview() {
+      try {
+        const data = await detailApi.getDetailReview(movieDetailId);
+        for (let i in data) {
+          setMovieReview(data[i]);
+        }
+        console.log(movieReview);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    }
     fetchMovie();
+    fetchMovieReview();
   }, []);
   if (loading) return <div>...Loading...</div>;
   return (
@@ -26,7 +41,7 @@ export default function MovieDetail() {
       <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} />
       <ul>
         <li>
-          <h1>제목: {movie.title}</h1>
+          <h3>제목: {movie.title}</h3>
         </li>
         <li>
           <p>줄거리: {movie.overview}</p>
@@ -44,10 +59,10 @@ export default function MovieDetail() {
           <p>투표수: {movie.vote_count}</p>
         </li>
       </ul>
+      <h4>리뷰</h4>
       <ul>
-        <li>
-          <h4>리뷰</h4>
-        </li>
+        <li>닉네임: {movieReview.author}</li>
+        <li>{movieReview.content}</li>
       </ul>
     </>
   );
