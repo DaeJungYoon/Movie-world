@@ -20,10 +20,10 @@ const topRatedApi = {
 };
 
 const detailApi = {
-  getDetail: async () => {
+  getDetail: async (movieId) => {
     const resposne = await moviesInstance.get(`/${movieId}`);
     return resposne.data;
   },
 };
 
-export { nowPlayingApi, popularApi, topRatedApi };
+export { nowPlayingApi, popularApi, topRatedApi, detailApi };
