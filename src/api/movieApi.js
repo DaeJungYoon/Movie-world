@@ -21,7 +21,7 @@ const topRatedApi = {
 
 const detailApi = {
   getDetail: async () => {
-    const resposne = await moviesInstance.get(`/&{movieId}`);
+    const resposne = await moviesInstance.get(`/${movieId}`);
     return resposne.data;
   },
 };
