@@ -25,7 +25,6 @@ export default function MovieDetail() {
         for (let i in data) {
           setMovieReview(data[i]);
         }
-        console.log(movieReview);
       } catch (err) {
         console.error(err);
       } finally {
