@@ -1,3 +1,4 @@
+import { useParams } from "react-router-dom";
 import { movieListsInstance, moviesInstance } from "./movieAxios";
 
 const nowPlayingApi = {
@@ -20,8 +21,8 @@ const topRatedApi = {
 };
 
 const detailApi = {
-  getDetail: async (movieId) => {
-    const resposne = await moviesInstance.get(`/${movieId}`);
+  getDetail: async (movieDetailId) => {
+    const resposne = await moviesInstance.get(`/${movieDetailId}`);
     return resposne.data;
   },
 };

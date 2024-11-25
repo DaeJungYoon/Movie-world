@@ -8,7 +8,7 @@ const movieListsInstance = axios.create({
   },
 });
 const moviesInstance = axios.create({
-  baseURL: import.meta.env.VITE_NOW_MOVIES + `/${movieId}`,
+  baseURL: import.meta.env.VITE_NOW_MOVIES,
   params: {
     api_key: import.meta.env.VITE_API_KEY,
   },
