@@ -11,8 +11,8 @@ export default function MovieDetail() {
     async function fetchMovie() {
       try {
         const data = await detailApi.getDetail(movieDetailId);
-        console.log(data);
         setMovie(data);
+
       } catch (err) {
         console.error(err);
       } finally {
