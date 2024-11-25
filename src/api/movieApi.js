@@ -1,4 +1,4 @@
-import { movieListsInstance } from "./movieAxios";
+import { movieListsInstance, moviesInstance } from "./movieAxios";
 
 const nowPlayingApi = {
   getNowPlaying: async () => {
