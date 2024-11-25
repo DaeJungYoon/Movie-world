@@ -2,15 +2,16 @@ import React, { useEffect, useState } from "react";
 import { detailApi } from "../api/movieApi";
 import { useParams } from "react-router-dom";
 
-export default function movieDetail() {
-  const { movieId } = useParams();
+export default function MovieDetail() {
+  const { movieDetailId } = useParams();
   const [movie, setMovie] = useState();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchMovie() {
       try {
-        const data = await detailApi.getDetail(movieId);
+        const data = await detailApi.getDetail(movieDetailId);
+        console.log(data);
         setMovie(data);
       } catch (err) {
         console.error(err);
@@ -20,7 +21,7 @@ export default function movieDetail() {
     }
     fetchMovie();
   }, []);
-  if (loading) return <div>Loading</div>;
+  if (loading) return <div>...Loading...</div>;
   return (
     <>
       <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} />
