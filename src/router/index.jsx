@@ -6,16 +6,22 @@ import NowPlayMore from "../pages/NowPlayMore";
 import PopularMore from "../pages/PopularMore";
 import TopRatedMore from "../pages/TopRatedMore";
 import MovieDetail from "../pages/movieDetail";
+import HomeLayout from "../HomeLayout";
+import LoginPage from "../pages/LoginPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <MainPage />,
+    element: <HomeLayout></HomeLayout>,
     children: [
-      // {
-      //   path: "/login",
-      //   element: <Login />,
-      // },
+      {
+        index: true,
+        element: <MainPage />,
+      },
+      {
+        path: "/login",
+        element: <LoginPage />,
+      },
     ],
   },
   {
