@@ -8,7 +8,9 @@ export default function HomeHeader() {
         <li>
           <Link to="/">Movie World</Link>
         </li>
-       
+        <button>
+          <Link to="/login">Login</Link>
+        </button>
       </ul>
     </header>
   );
