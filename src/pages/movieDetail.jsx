@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 export default function MovieDetail() {
   const { movieDetailId } = useParams();
   const [movie, setMovie] = useState();
-  const [movieReview, setMovieReview] = useState();
+  const [movieReview, setMovieReview] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -22,9 +22,10 @@ export default function MovieDetail() {
     async function fetchMovieReview() {
       try {
         const data = await detailApi.getDetailReview(movieDetailId);
-        for (let i in data) {
-          setMovieReview(data[i]);
-        }
+        // for (let i in data) {
+        //   setMovieReview(data);
+        // }
+        setMovieReview(data);
       } catch (err) {
         console.error(err);
       } finally {
@@ -34,6 +35,7 @@ export default function MovieDetail() {
     fetchMovie();
     fetchMovieReview();
   }, []);
+
   if (loading) return <div>...Loading...</div>;
   return (
     <>
@@ -59,10 +61,15 @@ export default function MovieDetail() {
         </li>
       </ul>
       <h4>리뷰</h4>
-      <ul>
-        <li>닉네임: {movieReview.author}</li>
-        <li>{movieReview.content}</li>
-      </ul>
+      {movieReview.map((review) => {
+        return (
+          <ul key={review.id}>
+            <li>닉네임: {review.author}</li>
+            <li>{review.content}</li>
+          </ul>
+        );
+      })}
+      ;
     </>
   );
 }
