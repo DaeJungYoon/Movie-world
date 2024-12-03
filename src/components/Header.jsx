@@ -11,6 +11,9 @@ export default function HomeHeader() {
         <button>
           <Link to="/login">Login</Link>
         </button>
+        <button>
+          <Link to="/search">Search</Link>
+        </button>
       </ul>
     </header>
   );
