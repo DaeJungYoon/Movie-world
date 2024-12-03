@@ -13,4 +13,13 @@ const moviesInstance = axios.create({
     api_key: import.meta.env.VITE_API_KEY,
   },
 });
-export { movieListsInstance, moviesInstance };
+
+const movieSearchInstance = axios.create({
+  baseURL: "https://api.themoviedb.org/3/search/movie",
+
+  params: {
+    api_key: import.meta.env.VITE_API_KEY,
+    language: import.meta.env.VITE_API_LANG,
+  },
+});
+export { movieListsInstance, moviesInstance, movieSearchInstance };

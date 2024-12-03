@@ -1,5 +1,9 @@
 import { useParams } from "react-router-dom";
-import { movieListsInstance, moviesInstance } from "./movieAxios";
+import {
+  movieListsInstance,
+  movieSearchInstance,
+  moviesInstance,
+} from "./movieAxios";
 
 const nowPlayingApi = {
   getNowPlaying: async () => {
@@ -31,4 +35,15 @@ const detailApi = {
   },
 };
 
-export { nowPlayingApi, popularApi, topRatedApi, detailApi };
+const searchApi = {
+  getSearch: async (inputKeyword) => {
+    const resposne = await movieSearchInstance.get("", {
+      params: {
+        query: inputKeyword,
+      },
+    });
+
+    return resposne.data.results;
+  },
+};
+export { nowPlayingApi, popularApi, topRatedApi, detailApi, searchApi };
