@@ -8,6 +8,7 @@ import TopRatedMore from "../pages/TopRatedMore";
 import MovieDetail from "../pages/movieDetail";
 import HomeLayout from "../HomeLayout";
 import LoginPage from "../pages/LoginPage";
+import SearchPage from "../pages/SearchPage";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,19 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <MovieDetail></MovieDetail>,
+      },
+    ],
+  },
+  {
+    path: "/search",
+    element: <RootLayout></RootLayout>,
+    children: [
+      {
+        index: true,
+        element: <SearchPage></SearchPage>,
+      },
+      {
+        path: "/search/:inputKeyword",
       },
     ],
   },
